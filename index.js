@@ -6,6 +6,9 @@ const app = express();
 
 app.use("/", require("./routes"));
 
+//Set up the views and view engine
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 app.listen(port, function (err) {
   if (err) {

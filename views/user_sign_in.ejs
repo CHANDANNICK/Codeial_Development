@@ -1,0 +1,44 @@
+<!-- Material form register -->
+<div class="card m-auto" style="width:22rem">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Sign in</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="/users/create-session" method="POST">
+
+            <!-- E-mail -->
+            <div class="md-form">
+                <input type="email" name="email" id="materialRegisterFormEmail" class="form-control">
+                <label for="materialRegisterFormEmail">E-mail</label>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" name="password" id="materialRegisterFormPassword" class="form-control"
+                    aria-describedby="materialRegisterFormPasswordHelpBlock">
+                <label for="materialRegisterFormPassword">Password</label>
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    At least 8 characters and 1 digit
+                </small>
+            </div>
+
+
+            <!-- Sign up button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign
+                in</button>
+
+            <hr>
+
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form register -->

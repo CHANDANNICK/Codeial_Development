@@ -2,7 +2,13 @@ const express = require("express");
 const port = 8000;
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
+const db = require("./configs/mongoose");
+const cookieParser = require("cookie-parser");
 
+//Middlewares
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("assets"));
 app.use(expressLayouts);
 
 //Middleware to Use Express Router
@@ -15,8 +21,6 @@ app.set("layout extractScripts", true);
 //Set up the views and view engine
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.use(express.urlencoded());
-app.use(express.static("assets"));
 
 app.listen(port, function (err) {
   if (err) {

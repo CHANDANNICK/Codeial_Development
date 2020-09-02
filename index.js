@@ -33,21 +33,22 @@ app.use(
     resave: false,
     cookie: {
       //60,000 => 1 minute
-      maxAge: (60000 * 60),
+      maxAge: 60000 * 60,
     },
   })
 );
 
 //<<--Initialize and Use the session-->>
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 //Middleware to Use Express Router
 app.use("/", require("./routes"));
 
-// <<-Server Status->>
+//Set Authenticated user
+app.use(passport.setAuthenticatedUser);
 
+// <<-Server Status->>
 app.listen(port, function (err) {
   if (err) {
     console.log(`Error in running server ${err}`);

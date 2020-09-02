@@ -43,6 +43,25 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
+//Check Authentication
+
+passport.checkAuthentication = function (req, res, next) {
+  // if user is signed in
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  //if user is not signed in
+  return res.redirect("/users/sign-in");
+};
+
+passport.setAuthenticatedUser = function (req, res, next) {
+  if (req.isAuthenticated()) {
+    req.locals.user = req.user;
+  }
+  next();
+};
+
 //export passport
 
 module.exports = passport;

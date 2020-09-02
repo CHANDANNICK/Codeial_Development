@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalStrategy = require("./configs/passport-local-strategy");
+const MongoStore = require("connect-mongo")(session);
 
 //Middlewares
 app.use(cookieParser());
@@ -22,7 +23,7 @@ app.set("layout extractScripts", true);
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// <<-- Generating session -->>
+// <<-- Generating session / MongoStore is used to save the session to database -->>
 
 app.use(
   session({
@@ -35,6 +36,17 @@ app.use(
       //60,000 => 1 minute
       maxAge: 60000 * 60,
     },
+    store: new MongoStore(
+      {
+        mongooseConnection: db,
+        autoRemove: "disabled",
+      },
+      function (err) {
+        if (condition) {
+          console.log(err || "MongoStore Connected Ok !");
+        }
+      }
+    ),
   })
 );
 

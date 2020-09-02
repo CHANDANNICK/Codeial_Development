@@ -21,3 +21,5 @@ db.on("error", console.error.bind(console, "Error in Connecting to DataBase"));
 db.once("open", function () {
   console.log("Successfully connect to MongoDB");
 });
+
+module.exports = db;

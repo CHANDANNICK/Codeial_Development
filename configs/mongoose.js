@@ -1,11 +1,12 @@
 // Require library
 const mongoose = require("mongoose");
 
-// Connecting to DataBase
-const MONGODBURL =
-  "mongodb+srv://admin:He11@@nk@cluster0.rkmcu.mongodb.net/codeial_development?retryWrites=true&w=majority";
+//Emvironment Variables
+require("dotenv").config();
 
-mongoose.connect(MONGODBURL || "mongodb://localhost/codeial_development", {
+const uri = process.env.ATLAS_URI;
+
+mongoose.connect(uri || "mongodb://localhost/codeial_development", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

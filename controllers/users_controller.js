@@ -32,8 +32,8 @@ module.exports.signIn = function (req, res) {
 
 module.exports.destroySession = function (req, res) {
   req.logout();
-  return res.redirect('/');
-}
+  return res.redirect("/");
+};
 
 //Get  Sign-up data
 module.exports.create = function (req, res) {

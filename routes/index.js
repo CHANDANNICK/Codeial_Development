@@ -10,4 +10,8 @@ router.get("/", homeController.home);
 //All other Routers
 router.use("/users", require("./users"));
 
+//All Post Routes
+
+router.use("/posts", require("./posts"));
+
 module.exports = router;

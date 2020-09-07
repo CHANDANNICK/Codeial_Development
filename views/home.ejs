@@ -39,7 +39,21 @@
                 <button class="btn btn-outline-info btn-rounded my-4 waves-effect z-depth-0" type="submit">Post</button>
             </div>
         </form>
+        
+    </div>
+    <div id="posts-list-container">
+        <ul class="list-group list-group-flush">
+            <ul class="list-group">
+                <% for( post of posts ) { %>
+                <li class="list-group-item">
+                    <a class="text-white btn-floating btn-fb btn-sm"><i class="fas fa-blog"></i></a><%= post.content %>
+                    <span> &nbsp -<%= post.user.username %> </span>
+                </li>
+                <% } %>
 
+
+            </ul>
+        </ul>
     </div>
     <!-- Card content End-->
 

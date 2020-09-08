@@ -31,30 +31,63 @@
 
     </div>
     <div class="card-body card-body-cascade text-center" style="margin-top: auto;">
+        <% if (locals.user) { %>
         <form action="/posts/create" method="POST" id="new-post-form">
             <div class="form-group shadow-textarea">
-                <label for="exampleFormControlTextarea6">Post's and Comment's</label>
+                <label for="exampleFormControlTextarea6">Post's</label>
                 <textarea name="content" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3"
                     placeholder="Write something here..."></textarea>
                 <button class="btn btn-outline-info btn-rounded my-4 waves-effect z-depth-0" type="submit">Post</button>
             </div>
         </form>
-        
+        <% } %>
+
+
     </div>
     <div id="posts-list-container">
         <ul class="list-group list-group-flush">
             <ul class="list-group">
                 <% for( post of posts ) { %>
-                <li class="list-group-item">
+                <br>
+                <li class="list-group-item list-group-item-light">
                     <a class="text-white btn-floating btn-fb btn-sm"><i class="fas fa-blog"></i></a><%= post.content %>
                     <span> &nbsp -<%= post.user.username %> </span>
+
+                    <div id="post-comments">
+
+                        <% if (locals.user) { %>
+                        <form action="/comments/create" method="POST">
+                            <div class="form-group shadow-textarea">
+                                <label for="exampleFormControlTextarea6">Comment's</label>
+                                <textarea name="content" class="form-control z-depth-1" rows="2"
+                                    placeholder="Write something here..."></textarea>
+                                <input type="hidden" name="post" value="<%= post._id %>">
+                                <button class="btn btn-outline-info btn-rounded my-4 waves-effect z-depth-0"
+                                    type="submit">Comment</button>
+                            </div>
+                        </form>
+                        <% } %>
+
+
+                        <div id="post-comments-list">
+                            <ul id="post-comments-<%= post._id %>  ">
+                                <% for( comment of post.comments ) { %>
+                                <p>
+                                    <%= comment.content %>
+                                    <span> &nbsp -<%= comment.user.username %> </span>
+                                </p>
+                                <% } %>
+                            </ul>
+
+                        </div>
+                    </div>
+
                 </li>
                 <% } %>
-
-
             </ul>
         </ul>
     </div>
+    <br>
     <!-- Card content End-->
 
 

@@ -14,4 +14,8 @@ router.use("/users", require("./users"));
 
 router.use("/posts", require("./posts"));
 
+//All Comments Routes
+
+router.use("/comments", require("./comments"));
+
 module.exports = router;

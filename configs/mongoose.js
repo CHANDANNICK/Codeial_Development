@@ -10,6 +10,9 @@ mongoose.connect(uri || "mongodb://localhost/codeial_development", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
+  keepAlive: true,
+  keepAliveInitialDelay: 300000,
 });
 
 //Aquiring DataBase To Check If it is available or not

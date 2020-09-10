@@ -49,64 +49,7 @@
             <ul class="list-group">
                 <% for( post of posts ) { %>
                 <br>
-                <li class="list-group-item list-group-item-light">
-                    <div class="d-flex justify-content-md-between">
-                        <div>
-                            <a class="text-white btn-floating btn-fb btn-success"><i class="fad fa-blog fa-2x"></i></a>
-                            <div style="white-space: pre-wrap"><%= post.content %></div>
-
-                        </div>
-
-                        <div class="d-flex justify-content-md-between">
-                            <div>
-                                <i class="fad fa-user fa-2x"
-                                    style="--fa-secondary-opacity: 1.0; --fa-primary-color: dodgerblue; --fa-secondary-color: gold;"></i>
-                                <%=post.user.username%>
-                            </div>
-
-                            <% if (locals.user && locals.user.id == post.user.id) { %>
-                            <a href="/posts/destroy/<%=post.id%> " class="btn-sm"><i class="fad fa-trash fa-2x"
-                                    style="--fa-primary-color: rgb(2, 2, 0); --fa-secondary-color: crimson; --fa-secondary-opacity: 1.0;"></i></a>
-                            <% } %>
-                        </div>
-                    </div>
-
-
-                    <div id="post-comments" class="m-2">
-
-                        <% if (locals.user) { %>
-                        <form action="/comments/create" method="POST">
-                            <div class="form-group shadow-textarea">
-                                <!-- <label for="exampleFormControlTextarea6">Comment's</label> -->
-                                <textarea name="content" class="form-control z-depth-1" rows="2"
-                                    placeholder="Write something here..." required></textarea>
-                                <input type="hidden" name="post" value="<%=post._id%>">
-                                <button class="btn btn-info btn-sm ml-0 comment-form-toggle  waves-effect waves-light"
-                                    type="submit">Comment</button>
-                            </div>
-                        </form>
-                        <% } %>
-
-
-                        <div id="post-comments-list">
-                            <ul id="post-comments-<%= post._id %>  ">
-                                <% for( comment of post.comments ) { %>
-                                <div class="d-md-flex justify-content-md-between">
-                                    <div style="white-space: pre-wrap"><%= comment.content %></div>
-                                    <span> &nbsp -<%=comment.user.username%> </span>
-                                    <% if (locals.user && locals.user.id == comment.user.id) { %>
-                                    <a href="/comments/destroy/<%=comment.id%> " class="btn-sm"><i class="fad fa-trash fa-2x"
-                                            style="--fa-primary-color: rgb(2, 2, 0); --fa-secondary-color: crimson; --fa-secondary-opacity: 1.0;"></i></a>
-                                    <% } %>
-
-                                </div>
-                                <% } %>
-                            </ul>
-
-                        </div>
-                    </div>
-
-                </li>
+                <%- include('_post') -%>
                 <% } %>
             </ul>
         </ul>

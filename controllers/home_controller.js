@@ -1,6 +1,8 @@
 //module.exports.actionName = function(req,res){};
 const Post = require("../models/post");
 
+const User = require("../models/user");
+
 module.exports.home = function (req, res) {
   // return res.send("<h1>Express is up and Running</h1>");
 
@@ -14,14 +16,13 @@ module.exports.home = function (req, res) {
       },
     })
     .exec(function (err, posts) {
-      if (err) {
-        console.log("Error in creating post");
-        return;
-      }
-      return res.render("home", {
-        title: "Codeial",
-        user: req.user,
-        posts: posts,
+      User.find({}, function (err, users) {
+        return res.render("home", {
+          title: "Codeial",
+          user: req.user,
+          alluser:users,
+          posts: posts,
+        });
       });
     });
 };

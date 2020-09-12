@@ -4,16 +4,24 @@ const User = require("../models/user");
 
 //profile action
 module.exports.profile = function (req, res) {
-  return res.render("user_profile", {
-    title: "Codeial",
-    user: req.user,
+  User.findById(req.params.id, function (err, usr) {
+    if (err) {
+      return redirect("back");
+    } else {
+      return res.render("user_profile", {
+        title: "Codeial",
+        user:req.user,
+        profile_user: usr,
+      });
+    }
   });
 };
 
 //render sign-up page
 module.exports.signUp = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect("/users/profile");
+    const userId = req.user.id;
+    return res.redirect("/users/profile/" + userId + "");
   }
   return res.render("user_sign_up", {
     title: "Codeial | Sign Up",
@@ -23,7 +31,8 @@ module.exports.signUp = function (req, res) {
 //render sign-in page
 module.exports.signIn = function (req, res) {
   if (req.isAuthenticated()) {
-    return res.redirect("/users/profile");
+    const userId = req.user.id;
+    return res.redirect("/users/profile/" + userId + "");
   }
   return res.render("user_sign_in", {
     title: "Codeial | Sign In",

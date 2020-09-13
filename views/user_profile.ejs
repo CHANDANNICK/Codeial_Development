@@ -1,3 +1,14 @@
+<style>
+    .card,
+    .card-cascade,
+    .card-body,
+    .card-body-cascade {
+        z-index: auto !important;
+    }
+</style>
+
+<%- include('_user_profile_modals') -%>
+
 <div class="container">
 
     <!-- Grid row -->
@@ -86,7 +97,8 @@
                 <!--Card content-->
                 <div class="card-body card-body-cascade text-center">
                     <!--Title-->
-                    <h4 class="card-title"><strong><%= profile_user.username %> </strong></h4>
+                    <h4 class="card-title"><strong><%= profile_user.name %> </strong></h4>
+
                     <h5 class="indigo-text"><strong><%= profile_user.email %> </strong></h5>
 
                     <p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
@@ -101,6 +113,15 @@
                     <a class="icons-sm tw-ic"><i class="fab fa-twitter"> </i></a>
                     <!--Dribbble-->
                     <a class="icons-sm fb-ic"><i class="fab fa-facebook-f"> </i></a>
+
+                    <!-- Update Profile Modal -->
+                    <% if (user.id == profile_user.id) { %>
+                        <div class="text-center">
+                            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+                                data-target="#modalRegisterForm">Update Profile</a>
+                        </div>
+                    <% } %>
+                    
 
                 </div>
                 <!--/.Card content-->

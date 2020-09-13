@@ -1,7 +1,7 @@
 <li>
     <div class="d-md-flex justify-content-md-between">
         <div style="white-space: pre-wrap"><%= comment.content %></div>
-        <span> &nbsp -<%=comment.user.username%> </span>
+        <span> &nbsp -<%=comment.user.name%> </span>
         <% if (locals.user && locals.user.id == comment.user.id) { %>
         <a href="/comments/destroy/<%=comment.id%> " class="btn-sm"><i class="fad fa-trash fa-2x"
                 style="--fa-primary-color: rgb(2, 2, 0); --fa-secondary-color: crimson; --fa-secondary-opacity: 1.0;"></i></a>

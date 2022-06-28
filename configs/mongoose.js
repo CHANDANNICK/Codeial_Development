@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 //Environment Variables
 require("dotenv").config();
 
-const uri = `mongodb+srv://admin:He11@@nk@cluster0.rkmcu.mongodb.net/?retryWrites=true&w=majority`;
+const uri = process.env.ATLAS_URI;
 
 mongoose.connect(uri || "mongodb://localhost/codeial_development", {
   useNewUrlParser: true,

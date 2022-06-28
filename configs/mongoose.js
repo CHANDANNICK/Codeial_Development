@@ -1,10 +1,10 @@
 // Require library
 const mongoose = require("mongoose");
 
-//Emvironment Variables
+//Environment Variables
 require("dotenv").config();
 
-const uri = process.env.ATLAS_URI;
+const uri = `mongodb+srv://admin:He11@@nk@cluster0.rkmcu.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(uri || "mongodb://localhost/codeial_development", {
   useNewUrlParser: true,
@@ -15,7 +15,7 @@ mongoose.connect(uri || "mongodb://localhost/codeial_development", {
   keepAliveInitialDelay: 300000,
 });
 
-//Aquiring DataBase To Check If it is available or not
+//Acquiring DataBase To Check If it is available or not
 const db = mongoose.connection;
 
 //Error
